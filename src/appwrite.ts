@@ -2,11 +2,11 @@
 import { Client, Account, TablesDB, Storage, ID, Query } from 'appwrite';
 import type { Product } from './data';
 
-const endpoint = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || '';
-const projectId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID || '';
-export const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID || '';
-export const tableId = process.env.NEXT_PUBLIC_APPWRITE_PRODUCTS_TABLE_ID || '';
-export const storageBucketId = process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID || '';
+const endpoint = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || 'https://fra.cloud.appwrite.io/v1';
+const projectId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID || '6ab3f77800235eff10da';
+export const databaseId = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID || '6ab3fc4100065a0c55ff';
+export const tableId = process.env.NEXT_PUBLIC_APPWRITE_PRODUCTS_TABLE_ID || '6ab3fc590027440805cc';
+export const storageBucketId = process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID || '6ab3ff81000d25bdfd2b';
 export const appwriteReady = Boolean(endpoint && projectId && databaseId && tableId);
 export const client = new Client().setEndpoint(endpoint || 'https://cloud.appwrite.io/v1').setProject(projectId || 'not-configured');
 export const account = new Account(client);
