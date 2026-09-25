@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import DemoNotice from '@/components/DemoNotice';
+import CookieNotice from '@/components/CookieNotice';
 import MobileNav from '@/components/MobileNav';
 import './globals.css';
 export const metadata: Metadata = {
@@ -9,5 +11,8 @@ export const metadata: Metadata = {
   icons: { icon: '/icon.png', apple: '/icon.png' },
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body><DemoNotice/>{children}<MobileNav/></body></html>;
+  return <html lang="en"><body>
+    <Script src="https://www.googletagmanager.com/gtag/js?id=G-T1GY809TY3" strategy="afterInteractive" />
+    <Script id="ga-init" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-T1GY809TY3');`}</Script>
+    <DemoNotice/>{children}<MobileNav/><CookieNotice/></body></html>;
 }
