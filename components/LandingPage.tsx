@@ -1,100 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Instagram, MapPin, MessageCircle, Phone } from 'lucide-react';
-import { whatsappNumber } from '@/src/data';
-
-const wa = (text: string) => `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-
-const journal = [
-  { n: 'I', t: 'Tell us the moment', d: 'An occasion, a date, a feeling you want to carry into the room.' },
-  { n: 'II', t: 'Shape the details', d: 'We confirm fit, fabric and construction together before a single cut is made.' },
-  { n: 'III', t: 'Wear your presence', d: 'Fittings and adjustments continue until the piece sits exactly as it should.' },
-];
-
-export default function LandingPage() {
-  return <div className="min-h-screen bg-[var(--paper)]">
-    <header className="site-header"><div className="shell flex h-[82px] items-center justify-between">
-      <Link href="/" className="brand-lockup"><Image src="/images/logo-mark.png" alt="Maison Prisca" width={40} height={40} /><span><strong className="serif block text-xl">Maison Prisca</strong><small>Atelier, Lagos</small></span></Link>
-      <nav className="hidden items-center gap-7 text-sm font-medium md:flex"><a href="#about">The atelier</a><a href="#services">Services</a><a href="#contact">Contact</a><Link href="/store" className="btn btn-dark !px-5 !py-2.5">Enter the shop <ArrowRight size={16} /></Link></nav>
-      <Link href="/store" className="btn btn-dark !px-4 !py-2.5 text-sm md:hidden">Shop</Link>
-    </div></header>
-
-    <main>
-      {/* Hero — asymmetric editorial spread, spine rail + stacked headline */}
-      <section className="shell grid gap-10 py-16 md:grid-cols-[28px_1fr_.85fr] md:py-24">
-        <div className="spine-rail hidden md:flex md:items-end md:pb-2"><span className="masthead">Maison Prisca — Lagos Atelier</span></div>
-        <div className="max-w-xl">
-          <p className="eyebrow">Lagos, Nigeria</p>
-          <h1 className="headline-stack mt-6 text-7xl sm:text-8xl"><span>Made to be</span><span className="italic text-[var(--rose-deep)]">unforgettable.</span></h1>
-          <p className="mt-8 max-w-md text-[15px] leading-8 text-[var(--muted)]">A Lagos atelier creating confident, body-aware pieces around your occasion, your measurements and the feeling you want to carry into the room.</p>
-          <div className="mt-9 flex flex-wrap gap-3"><Link href="/store" className="btn btn-grad">Explore the shop <ArrowRight size={17} /></Link><a href={wa('Hello Maison Prisca, I would like to book a private fitting.')} className="btn btn-line">Book a fitting</a></div>
-        </div>
-        <div className="mt-4 flex flex-col justify-end md:mt-0">
-          <div className="arch relative aspect-[4/5] w-full overflow-hidden"><div className="absolute inset-0 grid place-items-center bg-[var(--white)] p-10"><Image src="/images/logo-full.png" alt="Maison Prisca" width={420} height={220} className="w-full object-contain" /></div></div>
-          <p className="mt-3 text-[11px] text-[var(--muted)]">Fig. 1 — the house mark, Festac atelier</p>
-        </div>
-      </section>
-
-      {/* Trust strip — single divided row, not repeated icon cards */}
-      <section className="border-y border-[var(--line)] bg-[var(--white)]"><div className="shell flex flex-col divide-y divide-[var(--line)] py-2 sm:flex-row sm:divide-x sm:divide-y-0">
-        <p className="flex-1 py-4 text-sm sm:pr-6"><strong className="block">Considered design</strong><span className="text-[var(--muted)]">Every detail has a reason</span></p>
-        <p className="flex-1 py-4 text-sm sm:px-6"><strong className="block">Fit, not guesswork</strong><span className="text-[var(--muted)]">Guided measurements and counsel</span></p>
-        <p className="flex-1 py-4 text-sm sm:pl-6"><strong className="block">A human experience</strong><span className="text-[var(--muted)]">Direct WhatsApp concierge</span></p>
-      </div></section>
-
-      {/* About — pull quote + margin note, left-aligned asymmetric grid */}
-      <section id="about" className="shell grid gap-12 py-24 md:grid-cols-[1.1fr_.9fr] md:items-start">
-        <div>
-          <p className="eyebrow">The atelier</p>
-          <blockquote className="pull-quote mt-5 text-4xl sm:text-5xl">Luxury is the feeling of being perfectly understood.</blockquote>
-          <p className="mt-7 max-w-lg leading-8 text-[var(--muted)]">From Ankara and Adire to bridal, pageant and occasion looks, every piece is designed with care in our Lagos atelier — we take the time to understand your fit, your date and the story you want the piece to tell.</p>
-        </div>
-        <div className="margin-note pt-2">
-          {journal.map(step => <div key={step.n} className="toc-row"><span className="toc-num">{step.n}</span><div><strong className="block text-[15px]">{step.t}</strong><span className="text-sm text-[var(--muted)]">{step.d}</span></div></div>)}
-        </div>
-      </section>
-
-      {/* Services — asymmetric feature tiles, not identical cards */}
-      <section id="services" className="border-y border-[var(--line)] py-20"><div className="shell">
-        <p className="eyebrow">Choose your experience</p>
-        <h2 className="serif mt-4 text-5xl">Your moment, our craft.</h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          <article className="feature-tile feature-tile-lg md:row-span-2"><h3 className="serif text-4xl">Bespoke commissions</h3><p className="mt-3 max-w-sm text-sm leading-7 text-white/70">A one-of-one piece shaped from your references, your proportions and your occasion.</p><a href={wa('Hello Maison Prisca, I would like to discuss a bespoke commission.')} className="mt-6 inline-flex items-center gap-2 text-xs font-semibold text-[var(--champagne)]">Discuss a commission <ArrowRight size={14} /></a></article>
-          <article className="feature-tile feature-tile-sm"><h3 className="serif text-2xl">Bridal &amp; occasion</h3><p className="mt-2 max-w-sm text-sm leading-6 text-white/70">Soft drama, intelligent fit, and the confidence to stay present in every photograph.</p><a href={wa('Hello Maison Prisca, I would like to discuss bridal or occasion dressing.')} className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-[var(--champagne)]">Start your story <ArrowRight size={14} /></a></article>
-          <article className="feature-tile feature-tile-sm"><h3 className="serif text-2xl">Ready-to-wear</h3><p className="mt-2 max-w-sm text-sm leading-6 text-white/70">A considered edit of pieces made to move beautifully from wardrobe to calendar.</p><Link href="/store" className="mt-4 inline-flex items-center gap-2 text-xs font-semibold text-[var(--champagne)]">Shop the edit <ArrowRight size={14} /></Link></article>
-        </div>
-      </div></section>
-
-      {/* Signature note — left-aligned pull quote, not centered */}
-      <section className="shell py-24"><div className="max-w-2xl border-t border-[var(--line)] pt-8">
-        <blockquote className="pull-quote text-4xl leading-tight sm:text-5xl">"Your body is not a problem to solve. It is the canvas every beautiful detail begins with."</blockquote>
-        <p className="mt-5 text-sm text-[var(--muted)]">— Maison Prisca</p>
-      </div></section>
-
-      <section className="border-y border-[var(--line)] py-16"><div className="shell flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div><p className="eyebrow">The signature edit</p><h2 className="serif mt-3 text-5xl">Pieces with presence.</h2><p className="mt-4 max-w-xl leading-7 text-[var(--muted)]">Browse published pieces, explore every product photo, choose your size, and send your order directly to WhatsApp.</p></div>
-        <Link href="/store" className="btn btn-dark shrink-0">View the shop <ArrowRight size={17} /></Link>
-      </div></section>
-    </main>
-
-    {/* Footer — colophon page treatment */}
-    <footer id="contact" className="footer-luxury py-16 text-white"><div className="shell grid gap-12 md:grid-cols-[1fr_.9fr]">
-      <div>
-        <Image src="/images/logo-full-white.png" alt="Maison Prisca" width={300} height={160} className="w-[210px] object-contain" />
-        <p className="mt-6 max-w-md leading-7 text-white/65">Bespoke, bridal, occasion and ready-to-wear fashion designed in Lagos.</p>
-        <a href={wa('Hello Maison Prisca, I would like to make an enquiry.')} className="btn btn-grad mt-8"><MessageCircle size={17} /> WhatsApp the atelier</a>
-      </div>
-      <div>
-        <p className="eyebrow" style={{ color: 'var(--champagne)' }}>Visit &amp; connect</p>
-        <div className="mt-2">
-          <div className="colophon-link"><span className="flex items-center gap-3 text-white/75"><MapPin size={16} className="text-[var(--champagne)]" /> Lagos, Nigeria</span></div>
-          <a href={wa('Hello Maison Prisca, I would like to make an enquiry.')} className="colophon-link"><span className="flex items-center gap-3 text-white/75"><Phone size={16} className="text-[var(--champagne)]" /> 0814 500 0582</span><ArrowRight size={14} className="text-white/40" /></a>
-          <a href="#" className="colophon-link"><span className="flex items-center gap-3 text-white/75"><Instagram size={16} className="text-[var(--champagne)]" /> Instagram</span><ArrowRight size={14} className="text-white/40" /></a>
-        </div>
-      </div>
-    </div>
-    <div className="shell mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/15 pt-5 text-xs text-white/40"><span>© 2026 Maison Prisca — Lagos.</span><a href={process.env.NEXT_PUBLIC_ADMIN_SITE_URL || 'https://maison-prisca-admin.netlify.app'} className="underline">Private atelier access</a></div>
-    </footer>
-    <a href={wa('Hello Maison Prisca, I would like to make an enquiry.')} className="whatsapp-float" aria-label="Chat on WhatsApp"><MessageCircle size={22} /></a>
-  </div>;
-}
+import { ArrowDown, ArrowRight, Check, Instagram, MessageCircle, PackageCheck, ShoppingBag, Smartphone, Store, WandSparkles } from 'lucide-react';
+import FeaturedProducts from '@/components/FeaturedProducts';
+import { waLink, whatsappNumber } from '@/src/data';
+const flow=[['01','Discover','Browse a clear, visual catalogue.'],['02','Choose','See price, details and available sizes.'],['03','Build','Add one or several pieces to the bag.'],['04','Confirm','Enter customer and delivery details.'],['05','Send','Open WhatsApp with the complete order ready.']];
+const features=[['A visual catalogue','Show the full collection with photographs, prices and categories.'],['Size-aware shopping','Customers choose their size and quantity before messaging.'],['Multi-piece bag','Gather several items into one organized order.'],['WhatsApp handoff','Continue the human conversation with a structured message.'],['Owner controls','Manage images, pricing, sizes, stock status and publishing.'],['Order visibility','Review order details and move each order through its status.']];
+const wa=waLink('Hello Maison Prisca, I would like to see how this ordering experience can be customized for my brand.');
+export default function LandingPage(){return <div className="min-h-screen bg-[var(--paper)]"><header className="site-header"><div className="shell flex h-[76px] items-center justify-between"><Link href="/" className="brand-lockup"><Image src="/images/logo-mark.png" alt="Maison Prisca" width={40} height={40}/><span><strong className="serif block text-xl">Maison Prisca</strong><small>Lagos atelier · store demo</small></span></Link><nav className="hidden items-center gap-6 text-sm font-medium md:flex"><a href="#how-it-works">How it works</a><a href="#owner-controls">For the owner</a><Link href="/store" className="btn btn-dark !px-5 !py-2.5">Browse published pieces <ArrowRight size={15}/></Link></nav><Link href="/store" className="btn btn-dark !px-4 !py-2.5 text-sm md:hidden">Shop</Link></div></header><main>
+<section className="hero-luxury overflow-hidden"><div className="shell grid gap-10 py-12 md:min-h-[600px] md:grid-cols-[1fr_.9fr] md:items-center md:py-20"><div className="max-w-xl"><p className="eyebrow">Lagos fashion · online ordering experience</p><h1 className="serif mt-6 text-6xl leading-[.94] sm:text-7xl lg:text-8xl">Your collection,<br/><em>beautifully online.</em></h1><p className="mt-7 max-w-lg text-base leading-8 text-[var(--muted)]">Help customers discover your pieces, choose a size, build an order and send the complete details straight to WhatsApp.</p><div className="mt-8 flex flex-wrap gap-3"><Link href="/store" className="btn btn-grad">Browse published pieces <ArrowRight size={17}/></Link><a href="#how-it-works" className="btn btn-line">See how it works <ArrowDown size={15}/></a></div><p className="mt-5 text-xs tracking-wide text-[var(--muted)]">Ready-to-wear · Occasion · Bridal · Bespoke</p><div className="mt-9 flex items-center gap-3 text-xs text-[var(--muted)]"><span className="grid size-9 place-items-center rounded-full bg-white"><Smartphone size={17}/></span> Designed for mobile-first shopping</div></div>
+<div className="relative mx-auto w-full max-w-[510px] md:ml-auto"><div className="hero-art arch-frame relative grid aspect-[4/5] place-items-center overflow-hidden"><div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-[#dfcfc1] via-[#f5eee5] to-[#cbb68c]"><Image src="/images/logo-full.png" alt="Maison Prisca Atelier" width={420} height={220} className="w-[72%] object-contain"/></div></div><div className="product-float"><div className="flex items-center gap-3"><span className="grid size-12 place-items-center bg-[var(--blush)] text-[var(--rose-deep)]"><Store size={20}/></span><div><small className="label">Your catalogue</small><strong className="serif block text-lg">Your products, clearly shown</strong><span className="text-xs">Photos · prices · available sizes</span></div></div><Link href="/store" className="btn btn-dark mt-3 w-full !py-2.5 text-[10px]">Explore the shop <ArrowRight size={14}/></Link></div><div className="order-float"><span className="grid size-9 place-items-center rounded-full bg-emerald-50 text-emerald-700"><Check size={17}/></span><div><strong className="block text-sm">Order ready</strong><small className="text-xs text-[var(--muted)]">Customer details · delivery · order summary</small></div><MessageCircle size={18} className="ml-auto text-emerald-700"/></div></div></div></section>
+<section className="border-y border-[var(--line)] bg-[var(--white)]"><div className="shell grid gap-4 py-5 sm:grid-cols-3 sm:divide-x sm:divide-[var(--line)]"><p className="flex items-center gap-3 sm:px-5"><Store className="text-[var(--rose)]" size={19}/><span><strong className="block text-sm">Your store, clearly presented</strong><small className="text-xs text-[var(--muted)]">A polished catalogue for every launch</small></span></p><p className="flex items-center gap-3 sm:px-5"><ShoppingBag className="text-[var(--rose)]" size={19}/><span><strong className="block text-sm">A simpler order journey</strong><small className="text-xs text-[var(--muted)]">From discovery to one complete order</small></span></p><p className="flex items-center gap-3 sm:px-5"><MessageCircle className="text-[var(--rose)]" size={19}/><span><strong className="block text-sm">Human WhatsApp follow-up</strong><small className="text-xs text-[var(--muted)]">Keep the conversation personal</small></span></p></div></section>
+<section id="how-it-works" className="shell py-20 md:py-24"><div className="grid gap-10 md:grid-cols-[.8fr_1.2fr]"><div><p className="eyebrow">A better buying conversation</p><h2 className="serif mt-4 text-5xl leading-tight">From “How much?”<br/>to “Order received.”</h2><p className="mt-5 max-w-md leading-7 text-[var(--muted)]">Customers shouldn’t need to dig through old posts, ask for every price and send details in separate messages. Let the store organize the purchase before your team steps in.</p><Link href="/store" className="btn btn-dark mt-7">Try the ordering flow <ArrowRight size={16}/></Link></div><div className="margin-note">{flow.map(([n,title,copy])=><div key={n} className="toc-row !py-5"><span className="toc-num">{n}</span><div className="flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between sm:gap-5"><strong className="serif text-2xl">{title}</strong><span className="text-sm text-[var(--muted)] sm:max-w-xs">{copy}</span></div></div>)}</div></div></section>
+<section className="featured-band border-y border-[var(--line)] py-20"><div className="shell"><div className="flex flex-wrap items-end justify-between gap-4"><div><p className="eyebrow">The current edit</p><h2 className="serif mt-3 text-5xl">Pieces with presence.</h2><p className="mt-3 max-w-lg text-sm leading-7 text-[var(--muted)]">Only products published in the live catalogue appear here. Manage pieces from the private dashboard.</p></div><Link href="/store" className="btn btn-line">View the collection <ArrowRight size={15}/></Link></div><FeaturedProducts/></div></section>
+<section className="shell grid gap-12 py-20 md:grid-cols-2 md:items-center"><div className="relative grid aspect-[4/3] place-items-center overflow-hidden border border-[var(--line)] bg-[var(--white)]"><div className="grid gap-4 text-center"><Instagram size={28} className="mx-auto text-[var(--rose)]"/><p className="serif text-3xl">Discovery becomes<br/>an organized order.</p><div className="flex flex-wrap justify-center gap-2 text-xs text-[var(--muted)]"><span className="border border-[var(--line)] px-3 py-2">Instagram</span><ArrowRight size={15}/><span className="border border-[var(--line)] px-3 py-2">Online store</span><ArrowRight size={15}/><span className="border border-[var(--line)] px-3 py-2">WhatsApp</span></div></div></div><div><p className="eyebrow">Social → store → WhatsApp</p><h2 className="serif mt-4 text-5xl">Turn attention into an order.</h2><div className="mt-7 grid gap-3">{[['01','Instagram','A customer discovers your latest piece.'],['02','Your online store','They see your photos, prices, sizes and available pieces.'],['03','WhatsApp','One structured order reaches your preferred channel.']].map(([num,title,body])=><div key={num} className="flex gap-4 border-t border-[var(--line)] py-4"><span className="toc-num">{num}</span><div><strong className="block">{title}</strong><p className="text-sm text-[var(--muted)]">{body}</p></div></div>)}</div><p className="mt-5 border-l-2 border-[var(--gold)] pl-4 text-sm font-semibold">Your social media starts the conversation. Your store organizes the purchase.</p></div></section>
+<section id="owner-controls" className="owner-section py-20 text-white"><div className="shell grid gap-10 md:grid-cols-[.9fr_1.1fr] md:items-center"><div><p className="eyebrow !text-[var(--champagne)]">For the business owner</p><h2 className="serif mt-4 text-5xl">Your catalogue.<br/>Your control.</h2><p className="mt-5 max-w-lg leading-7 text-white/65">Add new pieces, update prices, change photos, manage sizes and publish the collection without rebuilding the website each time it changes.</p><a href={process.env.NEXT_PUBLIC_ADMIN_SITE_URL||'https://maison-prisca-admin.netlify.app'} className="btn btn-ghost-light mt-7">See the business dashboard <ArrowRight size={15}/></a></div><div className="grid gap-3 sm:grid-cols-3">{[['ADD','Products','Photos · prices · sizes'],['MANAGE','Availability','Categories · orders'],['PUBLISH','Your edit','Visible · current · ready']].map(([eyebrow,title,body])=><div key={eyebrow} className="owner-card"><WandSparkles size={18} className="text-[var(--champagne)]"/><p className="mt-4 label !text-[var(--champagne)]">{eyebrow}</p><h3 className="serif mt-2 text-2xl">{title}</h3><p className="mt-2 text-xs leading-5 text-white/60">{body}</p></div>)}</div></div></section>
+<section className="shell py-20"><div className="flex flex-wrap items-end justify-between gap-5"><div><p className="eyebrow">Built around fashion retail</p><h2 className="serif mt-4 text-5xl">The details that make it work.</h2></div><p className="max-w-sm text-sm leading-7 text-[var(--muted)]">A useful online extension of the way customers already discover and buy from fashion businesses.</p></div><div className="mt-9 grid gap-0 border-t border-[var(--line)] sm:grid-cols-2 lg:grid-cols-3">{features.map(([title,copy],i)=><article key={title} className="feature-list-item"><span className="toc-num">0{i+1}</span><div><h3 className="serif text-2xl">{title}</h3><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{copy}</p></div></article>)}</div></section>
+<section className="final-cta py-16"><div className="shell flex flex-col gap-6 md:flex-row md:items-center md:justify-between"><div><p className="eyebrow">Try before you imagine</p><h2 className="serif mt-3 text-5xl">Experience the complete ordering flow.</h2><p className="mt-3 max-w-xl leading-7 text-[var(--muted)]">Browse a published piece, select a size, add it to your bag, and prepare the order for WhatsApp.</p></div><div className="flex shrink-0 flex-wrap gap-3"><Link href="/store" className="btn btn-dark">Browse the collection <ArrowRight size={16}/></Link><a href={wa} className="btn btn-line">Ask a question</a></div></div></section></main>
+<footer id="contact" className="footer-luxury py-12 text-white"><div className="shell flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><Image src="/images/logo-full-white.png" alt="Maison Prisca" width={280} height={140} className="w-[190px] object-contain"/><p className="mt-4 max-w-sm text-sm leading-6 text-white/60">Online storefront concept by Maison Prisca Atelier, Lagos.</p></div><div><a href={wa} className="btn btn-grad"><MessageCircle size={16}/> WhatsApp the atelier</a><p className="mt-4 text-xs text-white/40">+{whatsappNumber}</p></div></div><div className="shell mt-8 flex justify-between border-t border-white/15 pt-4 text-xs text-white/40"><span>© 2026 Maison Prisca Atelier</span><span>DEMO STORE</span></div></footer></div>;}

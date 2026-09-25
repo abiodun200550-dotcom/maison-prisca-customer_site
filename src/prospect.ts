@@ -1,0 +1,1 @@
+export function getProspectRef(){if(typeof window==='undefined')return'';const fromUrl=new URLSearchParams(window.location.search).get('ref');if(fromUrl)return fromUrl;try{return window.sessionStorage.getItem('maison-prisca-ref')||'';}catch{return'';}}
